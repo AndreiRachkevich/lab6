@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Список людей</h1>
+{% if message %}
+    <p><strong>{{ message }}</strong></p>
+{% endif %}
+{% if latest_persons %}
+    <ul>
+        {% for person in latest_persons %}
+            <li>
+                <a href="/persons/{{ person.id }}/">
+                    {{ person.person_text }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No persons are available right now.</p>
+{% endif %}
+
+</body>
+</html>
