@@ -1,0 +1,47 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Телефонная книга</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class="mt-2">Телефонная книга</h1>
+            {% if user.is_authenticated %}
+                <p class="text-right">
+                    Здравствуйте, {{ user.username }}!
+                    <a href="/persons/logout">Выйти</a> |
+                    <a href="/persons/password-change">
+                        Сменить пароль
+                    </a>
+                    {% if user.is_staff %}
+                        | <a href="/persons/admin">Панель администратора</a>
+                    {% endif %}
+
+                </p>
+            {% else %}
+                <p class="text-right">
+                    <a href="/persons/login">Log in</a> |
+                    <a href="/persons/register">Register</a>
+                </p>
+            {% endif %}
+            <hr class="mt-0 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    {% block main %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
